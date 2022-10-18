@@ -42,6 +42,8 @@ trans_dev_df.to_sql('trans_dev', con=conn, if_exists='replace', index=False, ind
 
 conn.commit()
 
+print(c.execute("SELECT account_id FROM account;"))
+
 
 conn.close()
 
