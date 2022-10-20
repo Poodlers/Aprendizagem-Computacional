@@ -1,25 +1,32 @@
 import sqlite3
-from statistics import correlation, covariance
 from matplotlib import pyplot as plt
 import numpy as np
 import math
 
 MAX_CATEGORIES = 15
 
-#Retrieves the name of the columns in the database
-def getTableColumnNames(connection,tableName):
+# Retrieves the name of the columns in the database
+
+
+def getTableColumnNames(connection, tableName):
     columnNames = []
-    res = connection.execute("PRAGMA table_info(" + tableName +  ");") #Get information from a table
-    for result in res.fetchall():   #Create a list with all column names
+    # Get information from a table
+    res = connection.execute("PRAGMA table_info(" + tableName + ");")
+    for result in res.fetchall():  # Create a list with all column names
         columnNames.append(result[1])
     return columnNames
 
-#Prints the current table, column 1 and column 2
-def printCursorStatus():    
-    print("Active table: " + currentTableName + "      Active column 1: " + activeColumn1 + "      Active column 2: " + activeColumn2)
+# Prints the current table, column 1 and column 2
 
-#Prints the statistics of an array a. Title is for displaying purposes only
-def printArrayStatistics(a,title):
+
+def printCursorStatus():
+    print("Active table: " + currentTableName + "      Active column 1: " +
+          activeColumn1 + "      Active column 2: " + activeColumn2)
+
+# Prints the statistics of an array a. Title is for displaying purposes only
+
+
+def printArrayStatistics(a, title):
     print("----- Statistics for " + title + " -----")
     max = np.max(a)
     min = np.min(a)
@@ -32,13 +39,15 @@ def printArrayStatistics(a,title):
     print("Standard Deviation: " + str(std))
     print("")
 
-def printTwoArrayStatistics(a,b,title1,title2):
+
+def printTwoArrayStatistics(a, b, title1, title2):
     average1 = np.average(a)
     average2 = np.average(b)
     std1 = np.std(a)
     std2 = np.std(b)
     if len(a) == len(b):
-        print("----- Statistics between " + title1 + " and " + title2 + " -----")
+        print("----- Statistics between " +
+              title1 + " and " + title2 + " -----")
         sum = 0
         for i in range(len(a)):
             sum += (a[i] - average1) * (b[i] - average2)
@@ -52,7 +61,9 @@ def printTwoArrayStatistics(a,b,title1,title2):
             print("")
     print("")
 
-#Checks if the contents of an array are all numeric
+# Checks if the contents of an array are all numeric
+
+
 def checkArrayValuesFloat(arr):
     for element in arr:
         try:
@@ -61,7 +72,9 @@ def checkArrayValuesFloat(arr):
             return False
     return True
 
-#Check how many categories a column has
+# Check how many categories a column has
+
+
 def checkCategoryNumber(column):
     categories = []
     for element in column:
@@ -72,45 +85,43 @@ def checkCategoryNumber(column):
     return len(categories)
 
 
-    
-
 con = sqlite3.connect("bank_database.db")
 
 c = con.cursor()
 
-#Get table names
+# Get table names
 res = con.execute("SELECT name FROM sqlite_master WHERE type='table';")
 tableNames = []
 for result in res.fetchall():
     tableNames.append(result[0])
-#Set current active table
+# Set current active table
 currentTableName = tableNames[0]
 
-#Get table's column names
-activeTableColumnNames = getTableColumnNames(con,currentTableName)
+# Get table's column names
+activeTableColumnNames = getTableColumnNames(con, currentTableName)
 
 activeColumn1 = activeTableColumnNames[0]
 activeColumn2 = activeTableColumnNames[1]
 
-#print current table and columns
+# print current table and columns
 printCursorStatus()
 
 quit = False
-#start commands loop
+# start commands loop
 while not quit:
     command = input()
-    #command t is to change active table
+    # command t is to change active table
     if command == 't':
         currentTableIndex = tableNames.index(currentTableName)
-        if currentTableIndex == len(tableNames) -1:
+        if currentTableIndex == len(tableNames) - 1:
             currentTableName = tableNames[0]
         else:
             currentTableName = tableNames[currentTableIndex+1]
-        activeTableColumnNames = getTableColumnNames(con,currentTableName)
+        activeTableColumnNames = getTableColumnNames(con, currentTableName)
         activeColumn1 = activeTableColumnNames[0]
         activeColumn2 = activeTableColumnNames[1]
         printCursorStatus()
-    #command 1 is to change current column 1
+    # command 1 is to change current column 1
     elif command == '1':
         currentColumnIndex = activeTableColumnNames.index(activeColumn1)
         if currentColumnIndex == len(activeTableColumnNames) - 1:
@@ -118,7 +129,7 @@ while not quit:
         else:
             activeColumn1 = activeTableColumnNames[currentColumnIndex+1]
         printCursorStatus()
-    #command 2 is to change current column 2
+    # command 2 is to change current column 2
     elif command == '2':
         currentColumnIndex = activeTableColumnNames.index(activeColumn2)
         if currentColumnIndex == len(activeTableColumnNames) - 1:
@@ -126,12 +137,13 @@ while not quit:
         else:
             activeColumn2 = activeTableColumnNames[currentColumnIndex+1]
         printCursorStatus()
-    #command q is to quit
+    # command q is to quit
     elif command == 'q' or command == 'quit' or command == 'exit':
         quit = True
-    #command e is to extract results and graphs from current table and columns
+    # command e is to extract results and graphs from current table and columns
     elif command == 'a' or command == 'analyse':
-        res = con.execute("SELECT \"" + activeColumn1 + "\",\"" + activeColumn2 + "\" FROM " + currentTableName + ";")
+        res = con.execute("SELECT \"" + activeColumn1 + "\",\"" +
+                          activeColumn2 + "\" FROM " + currentTableName + ";")
         column1Data = []
         column2Data = []
         for result in res.fetchall():
@@ -140,39 +152,40 @@ while not quit:
         colum1IsNumeric = checkArrayValuesFloat(column1Data)
         colum2IsNumeric = checkArrayValuesFloat(column2Data)
         if colum1IsNumeric:
-            printArrayStatistics(column1Data,"Column 1")
+            printArrayStatistics(column1Data, "Column 1")
         else:
             print("Column 1 is not numeric\n")
         if colum2IsNumeric:
-            printArrayStatistics(column2Data,"Column 2")
+            printArrayStatistics(column2Data, "Column 2")
         else:
             print("Column 2 is not numeric\n")
         if colum1IsNumeric and colum2IsNumeric:
-            printTwoArrayStatistics(column1Data,column2Data,"Column 1","Column 2")
+            printTwoArrayStatistics(
+                column1Data, column2Data, "Column 1", "Column 2")
             print("Showing graphs\n")
-            fig , (ax) = plt.subplots()
+            fig, (ax) = plt.subplots()
             ax.set_xlabel(activeColumn1)
             ax.set_ylabel(activeColumn2)
             plt.title(activeColumn1 + " vs " + activeColumn2)
-            plt.scatter(column1Data,column2Data)
+            plt.scatter(column1Data, column2Data)
             plt.axhline(0)
             plt.show()
         elif colum2IsNumeric:
             if checkCategoryNumber(column1Data) < MAX_CATEGORIES:
-                fig , (ax) = plt.subplots()
+                fig, (ax) = plt.subplots()
                 ax.set_xlabel(activeColumn1)
                 ax.set_ylabel(activeColumn2)
                 plt.title(activeColumn1 + " vs " + activeColumn2)
-                plt.bar(column1Data,column2Data)
+                plt.bar(column1Data, column2Data)
                 plt.axhline(0)
                 plt.show()
         elif colum1IsNumeric:
             if checkCategoryNumber(column2Data) < MAX_CATEGORIES:
-                fig , (ax) = plt.subplots()
+                fig, (ax) = plt.subplots()
                 ax.set_xlabel(activeColumn1)
                 ax.set_ylabel(activeColumn2)
                 plt.title(activeColumn1 + " vs " + activeColumn2)
-                plt.barh(column1Data,column2Data)
+                plt.barh(column1Data, column2Data)
                 plt.axhline(0)
                 plt.show()
         printCursorStatus()
