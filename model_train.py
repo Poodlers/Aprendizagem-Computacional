@@ -1,7 +1,7 @@
 from numpy import NaN
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, f1_score, recall_score, balanced_accuracy_score
 import pandas as pd
 import sqlite3
 from datetime import datetime
@@ -36,7 +36,7 @@ for i in range(loan_dev_df['birth_number'].size):
 
 
 loan_dev_df = loan_dev_df.assign(age_at_loan=age_at_loan)
-loan_dev_df.dropna()
+loan_dev_df = loan_dev_df.dropna()
 print(loan_dev_df)
 
 
@@ -52,7 +52,7 @@ X = train.loc[:, feature_cols]
 y = train.status
 
 # 2. instantiate model
-logreg = LogisticRegression(max_iter=2000)
+logreg = LogisticRegression(max_iter=5000)
 
 # 3. fit
 logreg.fit(X, y)
@@ -63,6 +63,15 @@ Y_correct_prediction = test.status
 
 y_predict = logreg.predict(X_to_predict)
 
-accuracy = accuracy_score(y_predict, Y_correct_prediction)
+accuracy = accuracy_score(Y_correct_prediction, y_predict)
 
-print(accuracy)
+balanced_accuracy = balanced_accuracy_score(Y_correct_prediction, y_predict)
+
+recall = recall_score(Y_correct_prediction, y_predict)
+
+f1_sc = f1_score(Y_correct_prediction, y_predict)
+
+print("Accuracy: ", accuracy)
+print("Balanced Accuracy: ", balanced_accuracy)
+print("Recall: ", recall)
+print("F1 Score: ", f1_sc)
