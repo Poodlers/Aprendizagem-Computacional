@@ -84,6 +84,9 @@ tableNames = []
 for result in res.fetchall():
     tableNames.append(result[0])
 #Set current active table
+if len(tableNames) == 0:
+    print("No tables available!")
+    exit()
 currentTableName = tableNames[0]
 
 #Get table's column names
