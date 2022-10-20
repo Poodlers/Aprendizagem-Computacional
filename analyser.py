@@ -155,11 +155,11 @@ while not quit:
         colum1IsNumeric = checkArrayValuesFloat(column1Data)
         colum2IsNumeric = checkArrayValuesFloat(column2Data)
         if colum1IsNumeric:
-            printArrayStatistics(column1Data, "Column 1")
+            printArrayStatistics(column1Data, "Column '" + activeColumn1 + "'")
         else:
             print("Column 1 is not numeric\n")
         if colum2IsNumeric:
-            printArrayStatistics(column2Data, "Column 2")
+            printArrayStatistics(column2Data, "Column '" + activeColumn2 + "'")
         else:
             print("Column 2 is not numeric\n")
         if colum1IsNumeric and colum2IsNumeric:
