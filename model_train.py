@@ -1,4 +1,4 @@
-from numpy import NaN
+from numpy import NaN, var
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, recall_score, balanced_accuracy_score
@@ -20,44 +20,64 @@ loan_dev_df = pd.read_sql('''SELECT * FROM account
 loan_dev_df = loan_dev_df.replace('?', NaN)
 loan_dev_df = loan_dev_df.loc[:, ~loan_dev_df.columns.duplicated()]
 
+age_dict = {"M": 0, "F": 1}
+frequency_dict = {"monthly issuance": 0,
+                  "issuance after transaction": 1, "weekly issuance": 2}
+
+
+def make_into_discrete(var1):
+    return age_dict.get(var1)
+
+
+def make_frequency_discrete(var1):
+    return frequency_dict.get(var1)
 
 # create age_at_loan
-
-age_at_loan = []
-for i in range(loan_dev_df['birth_number'].size):
-    try:
-        loan_dev_df['date'][i]
-    except:
-        age_at_loan.append(NaN)
-        continue
-
-    age_at_loan.append((datetime.strptime(loan_dev_df['date'][i], '%Y-%m-%d').date(
-    ) - datetime.strptime(loan_dev_df['birth_number'][i], '%Y-%m-%d').date()).days / 365.25)
-
-
-loan_dev_df = loan_dev_df.assign(age_at_loan=age_at_loan)
-loan_dev_df = loan_dev_df.dropna()
-print(loan_dev_df)
 
 
 train, test = train_test_split(loan_dev_df, test_size=0.2, random_state=0)
 
-feature_cols = loan_dev_df.columns.drop(
-    ["frequency", "date", "gender", "type", "name", "region", "birth_number"])
+
+age_at_loan = []
+for i in range(train['birth_number'].size):
+    try:
+        train['date'][i]
+    except:
+        age_at_loan.append(NaN)
+        continue
+
+    age_at_loan.append((datetime.strptime(train['date'][i], '%Y-%m-%d').date(
+    ) - datetime.strptime(train['birth_number'][i], '%Y-%m-%d').date()).days / 365.25)
+
+train = train.assign(age_at_loan=age_at_loan)
+
+train['gender'] = train['gender'].apply(make_into_discrete)
+train['frequency'] = train['frequency'].apply(
+    make_frequency_discrete)
+train = train.dropna()
+
+
+feature_cols = train.columns.drop(
+    ["date", "type", "name", "region", "birth_number", "no. of municipalities with inhabitants < 499 ",
+     "no. of municipalities with inhabitants 500-1999", "no. of municipalities with inhabitants 2000-9999 ",
+     "no. of municipalities with inhabitants >10000 ", "loan_id", "district_id", "account_id", "status"
+     ])
 
 print(feature_cols)
-X = train.loc[:, feature_cols]
 
+
+X = train.loc[:, feature_cols]
 
 y = train.status
 
 # 2. instantiate model
-logreg = LogisticRegression(max_iter=5000)
+logreg = LogisticRegression(
+    solver='liblinear', max_iter=5000, class_weight='balanced')
 
 # 3. fit
 logreg.fit(X, y)
 
-X_to_predict = test.loc[:, feature_cols]
+X_to_predict = test.drop("status", axis=1)
 
 Y_correct_prediction = test.status
 
