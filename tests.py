@@ -4,7 +4,6 @@ import numpy as np
 import math
 
 
-
 con = sqlite3.connect("bank_database.db")
 
 c = con.cursor()
