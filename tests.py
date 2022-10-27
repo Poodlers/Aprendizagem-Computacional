@@ -10,22 +10,26 @@ con = sqlite3.connect("bank_database.db")
 c = con.cursor()
 
 # Get table names
-res = con.execute("SELECT account_id,balance FROM trans_dev")
-balance = []
+res = con.execute("SELECT account_id,amount FROM trans_dev")
+amount = []
 account_id = []
 for result in res.fetchall():
-    balance.append(result[1])
+    amount.append(result[1])
     account_id.append(result[0])
 trans_num = {}
-averageBalance = {}
+averageTransAmount = {}
 for index,account in enumerate(account_id):
-    record = averageBalance.get(account,-1)
+    record = averageTransAmount.get(account,-1)
     if record == -1:
-        averageBalance[account] = balance[index]
+        averageTransAmount[account] = amount[index]
         trans_num[account] = 1
     else:
-        averageBalance[account] += balance[index]
+        averageTransAmount[account] += amount[index]
         trans_num[account] += 1
-for account in averageBalance:
-    averageBalance[account] = averageBalance[account] / trans_num[account]
-print(averageBalance)
+for account in averageTransAmount:
+    averageTransAmount[account] = averageTransAmount[account] / trans_num[account]
+
+for account in averageTransAmount:
+    res = con.execute("UPDATE account SET average_trans_amount = " + str(averageTransAmount[account]) + " WHERE account_id = " + str(account))
+    con.commit()
+
