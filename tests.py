@@ -4,7 +4,6 @@ import numpy as np
 import math
 
 
-
 con = sqlite3.connect("bank_database.db")
 
 c = con.cursor()
@@ -18,8 +17,8 @@ for result in res.fetchall():
     account_id.append(result[0])
 trans_num = {}
 averageBalance = {}
-for index,account in enumerate(account_id):
-    record = averageBalance.get(account,-1)
+for index, account in enumerate(account_id):
+    record = averageBalance.get(account, -1)
     if record == -1:
         averageBalance[account] = balance[index]
         trans_num[account] = 1

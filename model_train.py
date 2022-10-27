@@ -20,6 +20,7 @@ loan_dev_df = pd.read_sql('''SELECT * FROM account
 loan_dev_df = loan_dev_df.replace('?', NaN)
 loan_dev_df = loan_dev_df.loc[:, ~loan_dev_df.columns.duplicated()]
 
+
 age_dict = {"M": 0, "F": 1}
 frequency_dict = {"monthly issuance": 0,
                   "issuance after transaction": 1, "weekly issuance": 2}
@@ -54,6 +55,7 @@ train = train.assign(age_at_loan=age_at_loan)
 train['gender'] = train['gender'].apply(make_into_discrete)
 train['frequency'] = train['frequency'].apply(
     make_frequency_discrete)
+
 train = train.dropna()
 
 
