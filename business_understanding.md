@@ -10,23 +10,13 @@ The goal is to develop a model to aid the end user in deciding wether a specific
 
 ### BU: translation of business goals into data mining goals
 
-A data mining model needs to be created to process the data. This model will be trained with data given by the bank that contanis information about past lent loans, account informations, geographical statistics, among others. By training the model with this data we should be able to develop the behavior we aim to achieve. In order to ensure that our model is indeed guessing the loan results right, we need to be careful not to use the whole data for training but to save some of it for testing purposes. Since that an un
+A data mining model needs to be created to process the data. This model will be trained with data given by the bank that contanis information about past lent loans, account informations, geographical statistics, among others. By training the model with this data we should be able to develop the behavior we aim to achieve. In order to ensure that our model is indeed guessing the loan results right, we need to be careful not to use the whole data for training but to save some of it for testing purposes. Since that an unpaid loan is significantly worse for the bank than an unconceeded loan, our model should be trained with processes that pay close attention to _False Positives_ in deteriment of \_False Negatives, and it should be assessed with test using the same philosophy.
 
 # Data Understanding
 
 ### DU: diversity of statistical methods
 
 We analysed multiple fields of different tables, calculating their average, variance, standard deviation and looking for outliers, through analytical and graphical methods. We also made an analysis between diferent columns, caclulating their Pearson correlation.
-
-Statistical methods:
-
-- Average
-- Standard Deviation
-- Max
-- Min
-- Variance
-- Pearson Correlation
-- Graphical Methods
 
 ### DU: complexity of statistical methods
 
@@ -87,7 +77,7 @@ discretization of gender and frequency variables to feed our LogisticRegression
 
 ### DP: feature engineering from tabular data
 
-We are attempting to extract the average balance when making transactions and average transaction amount for each account in order to maybe find correlation between the data.
+We attempted to extract the average balance when making transactions and average transaction amount to each account in order to maybe find correlation between the data.
 
 ### DP: sampling for domain-specific purposes
 
@@ -104,17 +94,3 @@ We are attempting to extract the average balance when making transactions and av
 Tested LogisticRegression algorithm
 
 ### descriptive: parameter tuning
-
-Manual tuning of the LogisticRegression has been done
-
-### descriptive: understanding algorithm behavior
-
-Dont know much about the inner workings of a Logistic Regression
-
-### descriptive: performance measure
-
-<code>print("Accuracy: ", accuracy) <br> print("Balanced Accuracy: ", balanced_accuracy) <br>print("Recall: ", recall) <br> print("F1 Score: ", f1_sc)</code>
-
-### descriptive: correct interpretation of performance measures
-
-### descriptive: comparative analysis of results

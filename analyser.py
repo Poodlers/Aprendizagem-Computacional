@@ -3,6 +3,8 @@ from matplotlib import pyplot as plt
 import numpy as np
 import math
 
+import pandas as pd
+
 MAX_CATEGORIES = 15
 
 # Retrieves the name of the columns in the database
@@ -89,19 +91,28 @@ con = sqlite3.connect("bank_database.db")
 
 c = con.cursor()
 
+loan_dev_df = pd.read_sql('''SELECT * FROM account
+     JOIN loan_dev ON loan_dev.account_id = account.account_id
+    LEFT JOIN disp ON disp.account_id = account.account_id
+    LEFT JOIN client ON client.client_id = disp.client_id
+    LEFT JOIN district ON district.code = client.district_id
+    WHERE disp.type = "OWNER"
+''', con)
+
+activeTableColumnNames = loan_dev_df.columns
+
 # Get table names
 res = con.execute("SELECT name FROM sqlite_master WHERE type='table';")
 tableNames = []
 for result in res.fetchall():
     tableNames.append(result[0])
-#Set current active table
+# Set current active table
 if len(tableNames) == 0:
     print("No tables available!")
     exit()
 currentTableName = tableNames[0]
 
 # Get table's column names
-activeTableColumnNames = getTableColumnNames(con, currentTableName)
 
 activeColumn1 = activeTableColumnNames[0]
 activeColumn2 = activeTableColumnNames[1]
@@ -120,7 +131,7 @@ while not quit:
             currentTableName = tableNames[0]
         else:
             currentTableName = tableNames[currentTableIndex+1]
-        activeTableColumnNames = getTableColumnNames(con, currentTableName)
+
         activeColumn1 = activeTableColumnNames[0]
         activeColumn2 = activeTableColumnNames[1]
         printCursorStatus()
@@ -145,8 +156,13 @@ while not quit:
         quit = True
     # command e is to extract results and graphs from current table and columns
     elif command == 'a' or command == 'analyse':
-        res = con.execute("SELECT \"" + activeColumn1 + "\",\"" +
-                          activeColumn2 + "\" FROM " + currentTableName + ";")
+        res = con.execute(f'''SELECT {activeColumn1}, {activeColumn2} FROM account
+                JOIN loan_dev ON loan_dev.account_id = account.account_id
+                LEFT JOIN disp ON disp.account_id = account.account_id
+                LEFT JOIN client ON client.client_id = disp.client_id
+                LEFT JOIN district ON district.code = client.district_id
+                WHERE disp.type = "OWNER"
+        ''', con)
         column1Data = []
         column2Data = []
         for result in res.fetchall():
