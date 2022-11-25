@@ -40,15 +40,15 @@ def model_train(X, y):
     # SVC
     # SVC(kernel='linear', C=1, random_state=42)
 
-    save_results = False
+    save_results = True
     model = RandomForestClassifier(class_weight='balanced')
 
     model.fit(trainX, trainy)
 
     # Selecting features based on importance
-
-    importance_select_features = select_features_by_importance(
-        model, X, y)
+    importance_select_features = None
+    # importance_select_features = select_features_by_importance(
+    #   model, X, y)
 
     # Selecting features with Sequential Feature Selection
 
@@ -114,13 +114,13 @@ def model_train(X, y):
     print("Mean Absolute Error: ", mean_abs_error)
     print("Mean Squared Error: ", mean_sqr_error)
 
-    feature_cols = list(feature_cols)
+    feature_cols_ = list(feature_cols)
 
     if save_results:
         f = open("model_performance.txt", "a")
         f.write("\nModel Type : " + model_type + "\n")
         f.write("Params = " + params.__str__() + "\n")
-        f.write("Feature cols: " + feature_cols.__str__() + "\n")
+        f.write("Feature cols: " + feature_cols_.__str__() + "\n")
         f.write("Metrics: " + "\n")
         f.write("Accuracy: " + accuracy.__str__() + "\n")
         f.write("Balanced Accuracy: " + balanced_accuracy.__str__() + "\n")

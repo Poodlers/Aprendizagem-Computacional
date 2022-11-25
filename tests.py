@@ -10,13 +10,14 @@ c = con.cursor()
 
 # Get table names
 
-# con.execute("ALTER TABLE account ADD COLUMN average_trans_amount")
-# con.execute("ALTER TABLE account ADD COLUMN min_transaction_amount")
-# con.execute("ALTER TABLE account ADD COLUMN max_transaction_amount")
-# con.execute("ALTER TABLE account ADD COLUMN average_balance")
+con.execute("ALTER TABLE account ADD COLUMN average_trans_amount")
+con.execute("ALTER TABLE account ADD COLUMN average_balance")
 con.execute("ALTER TABLE account ADD COLUMN min_balance")
 con.execute("ALTER TABLE account ADD COLUMN max_balance")
-"""
+con.execute("ALTER TABLE account ADD COLUMN min_transaction_amount")
+con.execute("ALTER TABLE account ADD COLUMN max_transaction_amount")
+
+
 res = con.execute("SELECT account_id,amount FROM trans_dev")
 amount = []
 account_id = []
@@ -41,7 +42,7 @@ for account in averageTransAmount:
     res = con.execute("UPDATE account SET average_trans_amount = " +
                       str(averageTransAmount[account]) + " WHERE account_id = " + str(account))
     con.commit()
-"""
+
 
 res1 = con.execute("SELECT account_id FROM account")
 res1 = res1.fetchall()
@@ -50,7 +51,8 @@ nulls = 0
 not_nulls = 0
 average_balance = []
 for account in res1:
-    res2 = con.execute("SELECT amount,balance FROM trans_dev WHERE account_id == " + str(account[0]))
+    res2 = con.execute(
+        "SELECT amount,balance FROM trans_dev WHERE account_id == " + str(account[0]))
     res2 = res2.fetchall()
     if len(res2) == 0:
         res = con.execute(
@@ -65,7 +67,7 @@ for account in res1:
         total_am = 0
         total_bal = 0
         trans_count = 0
-        for trans in res2: #trans[0] -> amount  trans[1] -> balance
+        for trans in res2:  # trans[0] -> amount  trans[1] -> balance
             if trans[0] > max_am:
                 max_am = trans[0]
             if trans[0] < min_am:
@@ -80,18 +82,17 @@ for account in res1:
         avg_am = total_am/trans_count
         avg_bal = total_bal/trans_count
         res = con.execute("UPDATE account SET min_transaction_amount = " + str(min_am) +
-                          ", max_transaction_amount = " + str(max_am) + 
-                          ", min_balance = " + str(min_bal) + 
-                          ", max_balance = " + str(max_bal) + 
-                          ", average_trans_amount = " + str(avg_am) + 
-                          ", average_balance = " + str(avg_bal) + 
+                          ", max_transaction_amount = " + str(max_am) +
+                          ", min_balance = " + str(min_bal) +
+                          ", max_balance = " + str(max_bal) +
+                          ", average_trans_amount = " + str(avg_am) +
+                          ", average_balance = " + str(avg_bal) +
                           " WHERE account_id == " + str(account[0]))
     i += 1
     print("{:.2f}".format(i/45) + "% (" + str(i) + "/4500)  " +
           str(not_nulls) + " not nulls and " + str(nulls) + " nulls", end="\r")
 con.commit()
 
-"""
 res1 = con.execute(
     "SELECT average_balance FROM account WHERE average_balance IS NOT NULL")
 res1 = res1.fetchall()
@@ -105,5 +106,3 @@ con.execute("UPDATE account SET average_balance = " +
             str(avg) + " WHERE average_balance IS NULL")
 
 con.commit()
-
-"""
