@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression, SGDClassifier
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -11,6 +11,7 @@ from create_dataset_for_test import process_dataset
 from sklearn.feature_selection import SelectKBest, chi2, SelectFromModel, f_classif, SequentialFeatureSelector
 from time import time
 from feature_selection import *
+from sklearn.preprocessing import StandardScaler
 
 
 # APPLY THE NECESSARY CHANGES TO DATASET
@@ -38,11 +39,16 @@ def model_train(X, y):
     # LogisticRegression(max_iter=2000)
 
     # SVC
-    # SVC(kernel='linear', C=1, random_state=42)
+    # SVC(kernel='linear', C=1, random_state=42, probability=False)
 
     save_results = True
-    model = RandomForestClassifier(class_weight='balanced')
+    model = SVC(kernel='linear', C=1, probability=True)
 
+    #scaler = StandardScaler().fit(trainX)
+
+    # trainX = scaler.transform(trainX)
+
+    # print(trainX)
     model.fit(trainX, trainy)
 
     # Selecting features based on importance
