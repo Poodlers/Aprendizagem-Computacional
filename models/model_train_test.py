@@ -2,8 +2,8 @@ import numpy as np
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression, SGDClassifier
 from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, AdaBoostClassifier, GradientBoostingClassifier
-from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, AdaBoostClassifier, GradientBoostingClassifier, VotingClassifier, HistGradientBoostingClassifier
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import accuracy_score, f1_score, recall_score, balanced_accuracy_score, mean_absolute_error, mean_squared_error
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,6 +12,7 @@ from sklearn.feature_selection import SelectKBest, chi2, SelectFromModel, f_clas
 from time import time
 from feature_selection import *
 from sklearn.preprocessing import StandardScaler
+from stacking_classifier import get_stacking
 
 
 # APPLY THE NECESSARY CHANGES TO DATASET
@@ -42,16 +43,19 @@ def model_train(X, y):
     # LogisticRegression(max_iter=2000)
 
     # SVC
-    # SVC(kernel='linear', C=1, random_state=42, probability=False)
+    # SVC(kernel='linear', C=1, random_state=42, probability=True)
+
+    # HistGradientBoostingClassifier(
+    # min_samples_leaf = 1, max_depth = 3, learning_rate = 0.3,  max_iter = 100,
+    #  categorical_features = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35])
 
     save_results = True
-    model = GradientBoostingClassifier(
-        n_estimators=1000, random_state=0)
 
     # scaler = StandardScaler().fit(trainX)
 
     # trainX = scaler.transform(trainX)
 
+    model = get_stacking()
     # print(trainX)
     model.fit(trainX, trainy)
 

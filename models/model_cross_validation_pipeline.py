@@ -1,18 +1,21 @@
 from numpy import NaN, sqrt
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.model_selection import train_test_split
+from sklearn.pipeline import make_pipeline
+from sklearn.ensemble import RandomForestClassifier, StackingClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import accuracy_score, f1_score, recall_score, balanced_accuracy_score, mean_absolute_error, mean_squared_error
 import pandas as pd
+from sklearn.naive_bayes import GaussianNB
 import sqlite3
 from datetime import datetime
 from encoder_one_hot import CategoricalOneHot
 import matplotlib.pyplot as plt
 from create_dataset_for_test import process_dataset
 from sklearn.model_selection import cross_val_score, StratifiedKFold, cross_validate
+from stacking_classifier import get_stacking
 
 # APPLY THE NECESSARY CHANGES TO DATASET
 
@@ -30,7 +33,8 @@ loan_dev_df, feature_cols = process_dataset("../bank_database.db")
 # SVC
 # SVC(kernel='linear', C=1, random_state=42, probability=False)
 
-model = RandomForestClassifier(class_weight='balanced')
+
+model = get_stacking()
 
 model_type = model.__class__.__name__
 
@@ -40,10 +44,8 @@ params = model.get_params()
 
 X = loan_dev_df.drop(["status", "loan_id"], axis=1)
 y = loan_dev_df["status"]
-kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1)
-validate_dict = cross_validate(model, X, y, cv=kfold, return_estimator=True)
 
-# build a stacking classifier using our cross validated estimators
+# evaluate a given model using cross-validation
 
 
 Y_correct_prediction = y
