@@ -379,3 +379,300 @@ Recall: 0.9649122807017544
 F1 Score: 0.9401709401709402
 Mean Absolute Error: 0.21212121212121213
 Mean Squared Error: 0.6513389472789296
+
+Model Type : RandomForestClassifier
+Params = {'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 200, 'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.9090909090909091
+Balanced Accuracy: 0.6666666666666666
+Recall: 1.0
+F1 Score: 0.9500000000000001
+Mean Absolute Error: 0.18181818181818182
+Mean Squared Error: 0.6030226891555273
+
+Model Type : ExtraTreesClassifier
+Params = {'bootstrap': False, 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 200, 'n_jobs': None, 'oob_score': False, 'random_state': 0, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8787878787878788
+Balanced Accuracy: 0.5555555555555556
+Recall: 1.0
+F1 Score: 0.9344262295081968
+Mean Absolute Error: 0.24242424242424243
+Mean Squared Error: 0.6963106238227914
+
+Model Type : ExtraTreesClassifier
+Params = {'bootstrap': False, 'ccp_alpha': 0.0, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 200, 'n_jobs': None, 'oob_score': False, 'random_state': 0, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8787878787878788
+Balanced Accuracy: 0.5555555555555556
+Recall: 1.0
+F1 Score: 0.9344262295081968
+Mean Absolute Error: 0.24242424242424243
+Mean Squared Error: 0.6963106238227914
+
+Model Type : AdaBoostClassifier
+Params = {'algorithm': 'SAMME.R', 'base_estimator': None, 'learning_rate': 1.0, 'n_estimators': 100, 'random_state': None}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8181818181818182
+Balanced Accuracy: 0.567251461988304
+Recall: 0.9122807017543859
+F1 Score: 0.8965517241379309
+Mean Absolute Error: 0.36363636363636365
+Mean Squared Error: 0.8528028654224418
+
+Model Type : AdaBoostClassifier
+Params = {'algorithm': 'SAMME.R', 'base_estimator': None, 'learning_rate': 1.0, 'n_estimators': 500, 'random_state': None}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.9090909090909091
+Balanced Accuracy: 0.760233918128655
+Recall: 0.9649122807017544
+F1 Score: 0.9482758620689654
+Mean Absolute Error: 0.18181818181818182
+Mean Squared Error: 0.6030226891555273
+
+Model Type : AdaBoostClassifier
+Params = {'algorithm': 'SAMME.R', 'base_estimator': None, 'learning_rate': 1.0, 'n_estimators': 1000, 'random_state': None}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8939393939393939
+Balanced Accuracy: 0.7514619883040936
+Recall: 0.9473684210526315
+F1 Score: 0.9391304347826087
+Mean Absolute Error: 0.21212121212121213
+Mean Squared Error: 0.6513389472789296
+
+Model Type : AdaBoostClassifier
+Params = {'algorithm': 'SAMME.R', 'base_estimator': None, 'learning_rate': 1.0, 'n_estimators': 700, 'random_state': None}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.9090909090909091
+Balanced Accuracy: 0.760233918128655
+Recall: 0.9649122807017544
+F1 Score: 0.9482758620689654
+Mean Absolute Error: 0.18181818181818182
+Mean Squared Error: 0.6030226891555273
+
+Model Type : GradientBoostingClassifier
+Params = {'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 1.0, 'loss': 'log_loss', 'max_depth': 1, 'max_features': None, 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_iter_no_change': None, 'random_state': 0, 'subsample': 1.0, 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8939393939393939
+Balanced Accuracy: 0.7046783625730995
+Recall: 0.9649122807017544
+F1 Score: 0.9401709401709402
+Mean Absolute Error: 0.21212121212121213
+Mean Squared Error: 0.6513389472789296
+
+Model Type : GradientBoostingClassifier
+Params = {'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 1.0, 'loss': 'log_loss', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_iter_no_change': None, 'random_state': 0, 'subsample': 1.0, 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8484848484848485
+Balanced Accuracy: 0.631578947368421
+Recall: 0.9298245614035088
+F1 Score: 0.9137931034482759
+Mean Absolute Error: 0.30303030303030304
+Mean Squared Error: 0.778498944161523
+
+Model Type : GradientBoostingClassifier
+Params = {'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_iter_no_change': None, 'random_state': 0, 'subsample': 1.0, 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8636363636363636
+Balanced Accuracy: 0.6403508771929824
+Recall: 0.9473684210526315
+F1 Score: 0.9230769230769231
+Mean Absolute Error: 0.2727272727272727
+Mean Squared Error: 0.7385489458759964
+
+Model Type : GradientBoostingClassifier
+Params = {'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 500, 'n_iter_no_change': None, 'random_state': 0, 'subsample': 1.0, 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8787878787878788
+Balanced Accuracy: 0.695906432748538
+Recall: 0.9473684210526315
+F1 Score: 0.9310344827586206
+Mean Absolute Error: 0.24242424242424243
+Mean Squared Error: 0.6963106238227914
+
+Model Type : GradientBoostingClassifier
+Params = {'ccp_alpha': 0.0, 'criterion': 'friedman_mse', 'init': None, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_depth': 3, 'max_features': None, 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 1000, 'n_iter_no_change': None, 'random_state': 0, 'subsample': 1.0, 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8636363636363636
+Balanced Accuracy: 0.6871345029239766
+Recall: 0.9298245614035088
+F1 Score: 0.9217391304347825
+Mean Absolute Error: 0.2727272727272727
+Mean Squared Error: 0.7385489458759964
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': None, 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 1, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 2, 'max_iter': 1, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.7941176470588235
+Balanced Accuracy: 0.6785714285714286
+Recall: 0.8571428571428571
+F1 Score: 0.8727272727272727
+Mean Absolute Error: 0.4117647058823529
+Mean Squared Error: 0.9074852129730301
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': None, 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 5, 'max_iter': 100, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8970588235294118
+Balanced Accuracy: 0.7410714285714286
+Recall: 0.9821428571428571
+F1 Score: 0.9401709401709402
+Mean Absolute Error: 0.20588235294117646
+Mean Squared Error: 0.6416889479197478
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': None, 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 10, 'max_iter': 1000, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8529411764705882
+Balanced Accuracy: 0.7470238095238095
+Recall: 0.9107142857142857
+F1 Score: 0.9107142857142857
+Mean Absolute Error: 0.29411764705882354
+Mean Squared Error: 0.7669649888473704
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': None, 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 5, 'max_iter': 1000, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8529411764705882
+Balanced Accuracy: 0.7142857142857143
+Recall: 0.9285714285714286
+F1 Score: 0.912280701754386
+Mean Absolute Error: 0.29411764705882354
+Mean Squared Error: 0.7669649888473704
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [32], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 5, 'max_iter': 1000, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8823529411764706
+Balanced Accuracy: 0.7321428571428572
+Recall: 0.9642857142857143
+F1 Score: 0.9310344827586207
+Mean Absolute Error: 0.23529411764705882
+Mean Squared Error: 0.6859943405700354
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 5, 'max_iter': 1000, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8676470588235294
+Balanced Accuracy: 0.7232142857142857
+Recall: 0.9464285714285714
+F1 Score: 0.9217391304347826
+Mean Absolute Error: 0.2647058823529412
+Mean Squared Error: 0.7276068751089989
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 3, 'max_iter': 1000, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8529411764705882
+Balanced Accuracy: 0.7142857142857143
+Recall: 0.9285714285714286
+F1 Score: 0.912280701754386
+Mean Absolute Error: 0.29411764705882354
+Mean Squared Error: 0.7669649888473704
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.1, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 3, 'max_iter': 100, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8970588235294118
+Balanced Accuracy: 0.7410714285714286
+Recall: 0.9821428571428571
+F1 Score: 0.9401709401709402
+Mean Absolute Error: 0.20588235294117646
+Mean Squared Error: 0.6416889479197478
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.3, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 3, 'max_iter': 100, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8970588235294118
+Balanced Accuracy: 0.7410714285714286
+Recall: 0.9821428571428571
+F1 Score: 0.9401709401709402
+Mean Absolute Error: 0.20588235294117646
+Mean Squared Error: 0.6416889479197478
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.5, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 3, 'max_iter': 100, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8823529411764706
+Balanced Accuracy: 0.7321428571428572
+Recall: 0.9642857142857143
+F1 Score: 0.9310344827586207
+Mean Absolute Error: 0.23529411764705882
+Mean Squared Error: 0.6859943405700354
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.4, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 3, 'max_iter': 100, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8970588235294118
+Balanced Accuracy: 0.7410714285714286
+Recall: 0.9821428571428571
+F1 Score: 0.9401709401709402
+Mean Absolute Error: 0.20588235294117646
+Mean Squared Error: 0.6416889479197478
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.35, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 3, 'max_iter': 100, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8676470588235294
+Balanced Accuracy: 0.6904761904761905
+Recall: 0.9642857142857143
+F1 Score: 0.923076923076923
+Mean Absolute Error: 0.2647058823529412
+Mean Squared Error: 0.7276068751089989
+
+Model Type : HistGradientBoostingClassifier
+Params = {'categorical_features': [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 'early_stopping': 'auto', 'l2_regularization': 0.0, 'learning_rate': 0.3, 'loss': 'log_loss', 'max_bins': 255, 'max_depth': 3, 'max_iter': 100, 'max_leaf_nodes': 31, 'min_samples_leaf': 1, 'monotonic_cst': None, 'n_iter_no_change': 10, 'random_state': None, 'scoring': 'loss', 'tol': 1e-07, 'validation_fraction': 0.1, 'verbose': 0, 'warm_start': False}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.8970588235294118
+Balanced Accuracy: 0.7410714285714286
+Recall: 0.9821428571428571
+F1 Score: 0.9401709401709402
+Mean Absolute Error: 0.20588235294117646
+Mean Squared Error: 0.6416889479197478
+
+Model Type : StackingClassifier
+Params = {'cv': StratifiedKFold(n_splits=10, random_state=1, shuffle=True), 'estimators': [('lr', LogisticRegression(max_iter=10000)), ('knn', KNeighborsClassifier()), ('r_forest', RandomForestClassifier(class_weight='balanced')), ('bayes', GaussianNB())], 'final_estimator__C': 1.0, 'final_estimator__class_weight': None, 'final_estimator__dual': False, 'final_estimator__fit_intercept': True, 'final_estimator__intercept_scaling': 1, 'final_estimator__l1_ratio': None, 'final_estimator__max_iter': 100, 'final_estimator__multi_class': 'auto', 'final_estimator__n_jobs': None, 'final_estimator__penalty': 'l2', 'final_estimator__random_state': None, 'final_estimator__solver': 'lbfgs', 'final_estimator__tol': 0.0001, 'final_estimator__verbose': 0, 'final_estimator__warm_start': False, 'final_estimator': LogisticRegression(), 'n_jobs': None, 'passthrough': False, 'stack_method': 'auto', 'verbose': 0, 'lr': LogisticRegression(max_iter=10000), 'knn': KNeighborsClassifier(), 'r_forest': RandomForestClassifier(class_weight='balanced'), 'bayes': GaussianNB(), 'lr__C': 1.0, 'lr__class_weight': None, 'lr__dual': False, 'lr__fit_intercept': True, 'lr__intercept_scaling': 1, 'lr__l1_ratio': None, 'lr__max_iter': 10000, 'lr__multi_class': 'auto', 'lr__n_jobs': None, 'lr__penalty': 'l2', 'lr__random_state': None, 'lr__solver': 'lbfgs', 'lr__tol': 0.0001, 'lr__verbose': 0, 'lr__warm_start': False, 'knn__algorithm': 'auto', 'knn__leaf_size': 30, 'knn__metric': 'minkowski', 'knn__metric_params': None, 'knn__n_jobs': None, 'knn__n_neighbors': 5, 'knn__p': 2, 'knn__weights': 'uniform', 'r_forest__bootstrap': True, 'r_forest__ccp_alpha': 0.0, 'r_forest__class_weight': 'balanced', 'r_forest__criterion': 'gini', 'r_forest__max_depth': None, 'r_forest__max_features': 'sqrt', 'r_forest__max_leaf_nodes': None, 'r_forest__max_samples': None, 'r_forest__min_impurity_decrease': 0.0, 'r_forest__min_samples_leaf': 1, 'r_forest__min_samples_split': 2, 'r_forest__min_weight_fraction_leaf': 0.0, 'r_forest__n_estimators': 100, 'r_forest__n_jobs': None, 'r_forest__oob_score': False, 'r_forest__random_state': None, 'r_forest__verbose': 0, 'r_forest__warm_start': False, 'bayes__priors': None, 'bayes__var_smoothing': 1e-09}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.9090909090909091
+Balanced Accuracy: 0.6666666666666666
+Recall: 1.0
+F1 Score: 0.9500000000000001
+Mean Absolute Error: 0.18181818181818182
+Mean Squared Error: 0.6030226891555273
+
+Model Type : StackingClassifier
+Params = {'cv': StratifiedKFold(n_splits=10, random_state=1, shuffle=True), 'estimators': [('lr', LogisticRegression(max_iter=10000)), ('knn', KNeighborsClassifier()), ('r_forest', RandomForestClassifier(class_weight='balanced')), ('bayes', GaussianNB())], 'final_estimator__C': 1.0, 'final_estimator__class_weight': None, 'final_estimator__dual': False, 'final_estimator__fit_intercept': True, 'final_estimator__intercept_scaling': 1, 'final_estimator__l1_ratio': None, 'final_estimator__max_iter': 10000, 'final_estimator__multi_class': 'auto', 'final_estimator__n_jobs': None, 'final_estimator__penalty': 'l2', 'final_estimator__random_state': None, 'final_estimator__solver': 'lbfgs', 'final_estimator__tol': 0.0001, 'final_estimator__verbose': 0, 'final_estimator__warm_start': False, 'final_estimator': LogisticRegression(max_iter=10000), 'n_jobs': None, 'passthrough': False, 'stack_method': 'auto', 'verbose': 0, 'lr': LogisticRegression(max_iter=10000), 'knn': KNeighborsClassifier(), 'r_forest': RandomForestClassifier(class_weight='balanced'), 'bayes': GaussianNB(), 'lr__C': 1.0, 'lr__class_weight': None, 'lr__dual': False, 'lr__fit_intercept': True, 'lr__intercept_scaling': 1, 'lr__l1_ratio': None, 'lr__max_iter': 10000, 'lr__multi_class': 'auto', 'lr__n_jobs': None, 'lr__penalty': 'l2', 'lr__random_state': None, 'lr__solver': 'lbfgs', 'lr__tol': 0.0001, 'lr__verbose': 0, 'lr__warm_start': False, 'knn__algorithm': 'auto', 'knn__leaf_size': 30, 'knn__metric': 'minkowski', 'knn__metric_params': None, 'knn__n_jobs': None, 'knn__n_neighbors': 5, 'knn__p': 2, 'knn__weights': 'uniform', 'r_forest__bootstrap': True, 'r_forest__ccp_alpha': 0.0, 'r_forest__class_weight': 'balanced', 'r_forest__criterion': 'gini', 'r_forest__max_depth': None, 'r_forest__max_features': 'sqrt', 'r_forest__max_leaf_nodes': None, 'r_forest__max_samples': None, 'r_forest__min_impurity_decrease': 0.0, 'r_forest__min_samples_leaf': 1, 'r_forest__min_samples_split': 2, 'r_forest__min_weight_fraction_leaf': 0.0, 'r_forest__n_estimators': 100, 'r_forest__n_jobs': None, 'r_forest__oob_score': False, 'r_forest__random_state': None, 'r_forest__verbose': 0, 'r_forest__warm_start': False, 'bayes__priors': None, 'bayes__var_smoothing': 1e-09}
+Feature cols: ['average_trans_amount', 'average_balance', 'min_balance', 'max_balance', 'min_transaction_amount', 'max_transaction_amount', 'loan_id', 'amount', 'duration', 'payments', 'status', 'no. of inhabitants', 'no. of municipalities with inhabitants < 499 ', 'no. of municipalities with inhabitants 500-1999', 'no. of municipalities with inhabitants 2000-9999 ', 'no. of municipalities with inhabitants >10000 ', 'no. of cities ', 'ratio of urban inhabitants ', 'average salary ', "unemploymant rate '95 ", "unemploymant rate '96 ", 'no. of enterpreneurs per 1000 inhabitants ', "no. of commited crimes '95 ", "no. of commited crimes '96 ", 'age_at_loan', 'frequency_issuance after transaction', 'frequency_monthly issuance', 'frequency_weekly issuance', 'gender_F', 'gender_M', 'region_Prague', 'region_central Bohemia', 'region_east Bohemia', 'region_north Bohemia', 'region_north Moravia', 'region_south Bohemia', 'region_south Moravia', 'region_west Bohemia']
+Metrics: 
+Accuracy: 0.9090909090909091
+Balanced Accuracy: 0.6666666666666666
+Recall: 1.0
+F1 Score: 0.9500000000000001
+Mean Absolute Error: 0.18181818181818182
+Mean Squared Error: 0.6030226891555273

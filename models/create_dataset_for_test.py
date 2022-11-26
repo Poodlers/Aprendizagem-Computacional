@@ -60,7 +60,7 @@ def process_dataset(database_path):
 
     loan_dev_df = loan_dev_df.drop(excluded_cols, axis=1)
 
-    #print("Feature columns: ", feature_cols)
+    # print("Feature columns: ", feature_cols)
     return loan_dev_df, feature_cols
 
 
