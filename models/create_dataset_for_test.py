@@ -25,6 +25,9 @@ def process_dataset(database_path):
     loan_dev_df.loc[loan_dev_df["no. of commited crimes '95 "] == '?',
                     "no. of commited crimes '95 "] = loan_dev_df["no. of commited crimes '96 "]
 
+    loan_dev_df.loc[loan_dev_df["unemploymant rate '95 "] == '?',
+                    "unemploymant rate '95 "] = loan_dev_df["unemploymant rate '96 "]
+
     # create age_at_loan - FEATURE ENGINEERING
 
     age_at_loan = []
@@ -57,8 +60,10 @@ def process_dataset(database_path):
 
     loan_dev_df = loan_dev_df.drop(excluded_cols, axis=1)
 
-    print("Feature columns: ", feature_cols)
+    #print("Feature columns: ", feature_cols)
     return loan_dev_df, feature_cols
 
 
-process_dataset("../bank_database.db")
+# ./test_data/test_database.db
+# ../bank_database.db
+process_dataset("./test_data/test_database.db")

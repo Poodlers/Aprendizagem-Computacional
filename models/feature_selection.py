@@ -6,7 +6,11 @@ from sklearn.feature_selection import SelectKBest, chi2, SelectFromModel, f_clas
 
 def select_features_by_importance(model, X, y):
     # Selecting features based on importance
-    importance = np.abs(model.feature_importances_)
+    importance = None
+    if model.__class__.__name__ == 'RandomForestClassifier':
+        importance = np.abs(model.feature_importances_)
+    else:
+        importance = np.abs(model.coef_[0])
     feature_names = np.array(X.columns)
     plt.rcParams.update({'font.size': 10})
     fig = plt.figure(figsize=(20, 10))

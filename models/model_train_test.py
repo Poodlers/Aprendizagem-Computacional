@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression, SGDClassifier
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -11,6 +11,7 @@ from create_dataset_for_test import process_dataset
 from sklearn.feature_selection import SelectKBest, chi2, SelectFromModel, f_classif, SequentialFeatureSelector
 from time import time
 from feature_selection import *
+from sklearn.preprocessing import StandardScaler
 
 
 # APPLY THE NECESSARY CHANGES TO DATASET
@@ -38,17 +39,22 @@ def model_train(X, y):
     # LogisticRegression(max_iter=2000)
 
     # SVC
-    # SVC(kernel='linear', C=1, random_state=42)
+    # SVC(kernel='linear', C=1, random_state=42, probability=False)
 
-    save_results = False
-    model = RandomForestClassifier(class_weight='balanced')
+    save_results = True
+    model = SVC(kernel='linear', C=1, probability=True)
 
+    #scaler = StandardScaler().fit(trainX)
+
+    # trainX = scaler.transform(trainX)
+
+    # print(trainX)
     model.fit(trainX, trainy)
 
     # Selecting features based on importance
-
-    importance_select_features = select_features_by_importance(
-        model, X, y)
+    importance_select_features = None
+    # importance_select_features = select_features_by_importance(
+    #   model, X, y)
 
     # Selecting features with Sequential Feature Selection
 
@@ -114,13 +120,13 @@ def model_train(X, y):
     print("Mean Absolute Error: ", mean_abs_error)
     print("Mean Squared Error: ", mean_sqr_error)
 
-    feature_cols = list(feature_cols)
+    feature_cols_ = list(feature_cols)
 
     if save_results:
         f = open("model_performance.txt", "a")
         f.write("\nModel Type : " + model_type + "\n")
         f.write("Params = " + params.__str__() + "\n")
-        f.write("Feature cols: " + feature_cols.__str__() + "\n")
+        f.write("Feature cols: " + feature_cols_.__str__() + "\n")
         f.write("Metrics: " + "\n")
         f.write("Accuracy: " + accuracy.__str__() + "\n")
         f.write("Balanced Accuracy: " + balanced_accuracy.__str__() + "\n")
