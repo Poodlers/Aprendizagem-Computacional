@@ -102,7 +102,7 @@ def model_train(X, y):
         loan_ids = loan_ids.assign(Predicted=test_predict_probs[0])
         loan_ids = loan_ids.rename(columns={'loan_id': 'Id'})
         print(loan_ids)
-        loan_ids.to_csv('results.csv', columns=[
+        loan_ids.to_csv('results2.csv', columns=[
                         'Id', 'Predicted'], index=False)
         print(len(test_predict_probs))
 
