@@ -12,7 +12,7 @@ from datetime import datetime
 from encoder_one_hot import CategoricalOneHot
 import matplotlib.pyplot as plt
 from create_dataset_for_test import process_dataset
-from sklearn.model_selection import cross_val_score, StratifiedKFold, cross_val_predict
+from sklearn.model_selection import cross_val_score, StratifiedKFold, cross_validate
 
 # APPLY THE NECESSARY CHANGES TO DATASET
 
@@ -20,7 +20,17 @@ from sklearn.model_selection import cross_val_score, StratifiedKFold, cross_val_
 
 loan_dev_df, feature_cols = process_dataset("../bank_database.db")
 
-model = SVC(kernel='linear', C=1, random_state=42)
+# BEST MODELS SO FAR
+# random forest classifier
+# RandomForestClassifier(class_weight='balanced')
+
+# Logictic Regression
+# LogisticRegression(max_iter=2000)
+
+# SVC
+# SVC(kernel='linear', C=1, random_state=42, probability=False)
+
+model = RandomForestClassifier(class_weight='balanced')
 
 model_type = model.__class__.__name__
 
@@ -30,19 +40,13 @@ params = model.get_params()
 
 X = loan_dev_df.drop(["status", "loan_id"], axis=1)
 y = loan_dev_df["status"]
-kfold = StratifiedKFold(n_splits=10, shuffle=True, random_state=1)
-y_predict = cross_val_predict(model, X, y, cv=kfold, method='predict')
+kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1)
+validate_dict = cross_validate(model, X, y, cv=kfold, return_estimator=True)
+
+# build a stacking classifier using our cross validated estimators
+
+
 Y_correct_prediction = y
-
-if model_type == "DecisionTreeClassifier":
-    fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(40, 40), dpi=300)
-
-    plot_tree(model,
-              feature_names=feature_cols,
-              class_names=["Loan given", "Loan denied"],
-              filled=True)
-
-    fig.savefig('imagename.png')
 
 predict_test = False  # true in order to export a .csv for Kaggle
 

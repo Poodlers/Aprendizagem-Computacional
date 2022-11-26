@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression, SGDClassifier
 from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, AdaBoostClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, recall_score, balanced_accuracy_score, mean_absolute_error, mean_squared_error
 import pandas as pd
@@ -17,6 +17,9 @@ from sklearn.preprocessing import StandardScaler
 # APPLY THE NECESSARY CHANGES TO DATASET
 
 # SPLIT DATA INTO TEST AND TRAIN
+
+# smote: ../SMOTE_tests/bank_database.db
+# without smote ../bank_database.db
 
 loan_dev_df, feature_cols = process_dataset("../bank_database.db")
 
@@ -42,9 +45,10 @@ def model_train(X, y):
     # SVC(kernel='linear', C=1, random_state=42, probability=False)
 
     save_results = True
-    model = SVC(kernel='linear', C=1, probability=True)
+    model = GradientBoostingClassifier(
+        n_estimators=1000, random_state=0)
 
-    #scaler = StandardScaler().fit(trainX)
+    # scaler = StandardScaler().fit(trainX)
 
     # trainX = scaler.transform(trainX)
 
@@ -66,7 +70,8 @@ def model_train(X, y):
     params = model.get_params()
 
     if model_type == "DecisionTreeClassifier":
-        fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(40, 40), dpi=300)
+        fig, axes = plt.subplots(nrows=1, ncols=1,
+                                 figsize=(40, 40), dpi=300)
 
         plot_tree(model,
                   feature_names=feature_cols,
@@ -147,6 +152,6 @@ importance_select_features = model_train(
 # X_sequential = X_trainset.iloc[:, sequential_feature_select_features]
 # model_train(X_sequential, y_trainset)
 
-#print("\n \n TRAINING WITH IMPORTANCE FEATURE VARIABLES")
-#X_importance = X_trainset.iloc[:, importance_select_features]
-#model_train(X_importance, y_trainset)
+# print("\n \n TRAINING WITH IMPORTANCE FEATURE VARIABLES")
+# X_importance = X_trainset.iloc[:, importance_select_features]
+# model_train(X_importance, y_trainset)
