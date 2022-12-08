@@ -6,7 +6,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, AdaBoostClassifier, StackingClassifier, GradientBoostingClassifier, VotingClassifier, HistGradientBoostingClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
-from sklearn.metrics import accuracy_score, f1_score, recall_score, balanced_accuracy_score, mean_absolute_error, mean_squared_error, roc_curve, roc_auc_score
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, plot_confusion_matrix,  f1_score, recall_score, balanced_accuracy_score, mean_absolute_error, mean_squared_error, roc_curve, roc_auc_score
 import pandas as pd
 import matplotlib.pyplot as plt
 from create_dataset_for_test import process_dataset
@@ -74,7 +74,7 @@ def model_train(X, y):
 
     # trainX = scaler.transform(trainX)
 
-    model = get_stacking()
+    model = RandomForestClassifier(class_weight='balanced')
 
     model_type = model.__class__.__name__
     print(model_type)
@@ -142,12 +142,12 @@ def model_train(X, y):
     plt.legend(loc=4)
     plt.show()
 
+    color = 'white'
+    conf_matrix = confusion_matrix(Y_correct_prediction, y_predict)
+    plot_confusion_matrix(model, testX, testy, cmap=plt.cm.Blues)
+    plt.show()
+
     accuracy = accuracy_score(Y_correct_prediction, y_predict)
-
-    mean_abs_error = mean_absolute_error(Y_correct_prediction, y_predict)
-
-    mean_sqr_error = np.sqrt(mean_squared_error(
-        Y_correct_prediction, y_predict))
 
     balanced_accuracy = balanced_accuracy_score(
         Y_correct_prediction, y_predict)
@@ -161,8 +161,7 @@ def model_train(X, y):
     print("Balanced Accuracy: ", balanced_accuracy)
     print("Recall: ", recall)
     print("F1 Score: ", f1_sc)
-    print("Mean Absolute Error: ", mean_abs_error)
-    print("Mean Squared Error: ", mean_sqr_error)
+    print(classification_report(Y_correct_prediction, y_predict))
 
     feature_cols_ = list(feature_cols)
 
@@ -177,8 +176,6 @@ def model_train(X, y):
         f.write("Balanced Accuracy: " + balanced_accuracy.__str__() + "\n")
         f.write("Recall: " + recall.__str__() + "\n")
         f.write("F1 Score: " + f1_sc.__str__() + "\n")
-        f.write("Mean Absolute Error: " + mean_abs_error.__str__() + "\n")
-        f.write("Mean Squared Error: " + mean_sqr_error.__str__() + "\n")
 
         f.close()
    # return sequential_feature_select_features, importance_select_features
