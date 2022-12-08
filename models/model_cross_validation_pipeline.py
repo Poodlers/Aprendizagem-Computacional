@@ -57,7 +57,7 @@ def get_stacking():
 # get_stacking()
 
 
-model = RandomForestClassifier(class_weight='balanced', n_estimators=300)
+model = get_stacking()
 
 cv = StratifiedKFold(n_splits=5, shuffle=True)
 
