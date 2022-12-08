@@ -1,7 +1,7 @@
 from sklearn.ensemble import RandomForestClassifier, VotingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
-from sklearn.model_selection import GridSearchCV, train_test_split
+from sklearn.model_selection import GridSearchCV, StratifiedKFold, train_test_split
 from create_dataset_for_test import process_dataset
 
 
@@ -15,17 +15,20 @@ y_trainset = loan_dev_df.status
 trainX, testX, trainy, testy = train_test_split(
     X_trainset, y_trainset, test_size=0.2, random_state=2, stratify=y_trainset, shuffle=True)
 
-clf1 = LogisticRegression(random_state=1, max_iter=500)
-clf2 = RandomForestClassifier(random_state=1)
-clf3 = SVC(kernel='linear', C=1, random_state=42, probability=True)
-eclf = VotingClassifier(estimators=[('lr', clf1), ('rf', clf2), ('gnb', clf3)],
-                        voting='soft'
-                        )
+clf1 = LogisticRegression(random_state=1, max_iter=10000)
+clf2 = RandomForestClassifier(class_weight='balanced')
+# eclf = VotingClassifier(estimators=[('lr', clf1), ('rf', clf2)],
+#                        voting='soft'
+#                        )
 
-params = {'lr__C': [1.0, 100.0], 'rf__n_estimators': [
-    20, 200], 'gnb__C': [1.0, 100.0]}
+params = {'n_estimators': [
+    20, 200, 300, 400, 500], 'criterion': ["gini", "entropy", "log_loss"]}
 
-grid = GridSearchCV(estimator=eclf, param_grid=params, cv=5)
+cv = StratifiedKFold(n_splits=5, shuffle=True)
+grid = GridSearchCV(estimator=clf2, param_grid=params, cv=cv)
 grid = grid.fit(trainX, trainy)
 
-print(grid)
+print(" Results from Grid Search ")
+print("\n The best estimator across ALL searched params:\n", grid.best_estimator_)
+print("\n The best score across ALL searched params:\n", grid.best_score_)
+print("\n The best parameters across ALL searched params:\n", grid.best_params_)

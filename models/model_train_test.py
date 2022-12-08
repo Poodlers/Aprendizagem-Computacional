@@ -1,10 +1,12 @@
 import numpy as np
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression, SGDClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, AdaBoostClassifier, GradientBoostingClassifier, VotingClassifier, HistGradientBoostingClassifier
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import accuracy_score, f1_score, recall_score, balanced_accuracy_score, mean_absolute_error, mean_squared_error
+from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, AdaBoostClassifier, StackingClassifier, GradientBoostingClassifier, VotingClassifier, HistGradientBoostingClassifier
+from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
+from sklearn.metrics import accuracy_score, f1_score, recall_score, balanced_accuracy_score, mean_absolute_error, mean_squared_error, roc_curve, roc_auc_score
 import pandas as pd
 import matplotlib.pyplot as plt
 from create_dataset_for_test import process_dataset
@@ -12,7 +14,6 @@ from sklearn.feature_selection import SelectKBest, chi2, SelectFromModel, f_clas
 from time import time
 from feature_selection import *
 from sklearn.preprocessing import StandardScaler
-from stacking_classifier import get_stacking
 
 
 # APPLY THE NECESSARY CHANGES TO DATASET
@@ -22,12 +23,30 @@ from stacking_classifier import get_stacking
 # smote: ../SMOTE_tests/bank_database.db
 # without smote ../bank_database.db
 
-loan_dev_df, feature_cols = process_dataset("../bank_database.db")
+loan_dev_df, feature_cols = process_dataset("../SMOTE_tests/bank_database.db")
 
 
 X = loan_dev_df.loc[:, feature_cols]
 X_trainset = X.drop(["status", "loan_id"], axis=1)
 y_trainset = loan_dev_df.status
+
+
+def get_stacking():
+    models = dict()
+    models['lr'] = LogisticRegression(max_iter=10000)
+    models['knn'] = KNeighborsClassifier()
+    models['r_forest'] = RandomForestClassifier(class_weight='balanced')
+    models['svm'] = SVC(kernel='linear', C=1,
+                        random_state=42, probability=True)
+    models['bayes'] = GaussianNB()
+    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=1)
+    level0 = list(models.items())
+    # define meta learner model
+    level1 = LogisticRegression(max_iter=10000)
+    # define the stacking ensemble
+
+    return StackingClassifier(
+        estimators=level0, final_estimator=level1, cv=cv)
 
 
 def model_train(X, y):
@@ -56,7 +75,9 @@ def model_train(X, y):
     # trainX = scaler.transform(trainX)
 
     model = get_stacking()
-    # print(trainX)
+
+    model_type = model.__class__.__name__
+    print(model_type)
     model.fit(trainX, trainy)
 
     # Selecting features based on importance
@@ -68,8 +89,6 @@ def model_train(X, y):
 
     # sequential_feature_select_features = sequential_select_features(
     #    model, X, y)
-
-    model_type = model.__class__.__name__
 
     params = model.get_params()
 
@@ -88,6 +107,7 @@ def model_train(X, y):
 
     Y_correct_prediction = testy
     y_predict = model.predict(testX)
+    y_pred_proba = model.predict_proba(testX)[::, 1]
 
     if predict_test:
         loan_test_df, feature_test_cols = process_dataset(
@@ -108,6 +128,20 @@ def model_train(X, y):
 
     # CALCULATE METRICS
 
+    # ROC AND AUC
+
+    fpr, tpr, _ = roc_curve(Y_correct_prediction,  y_pred_proba)
+
+    # create ROC curve
+    auc = roc_auc_score(Y_correct_prediction, y_pred_proba)
+
+    # create ROC curve
+    plt.plot(fpr, tpr, label="AUC="+str(auc))
+    plt.ylabel('True Positive Rate')
+    plt.xlabel('False Positive Rate')
+    plt.legend(loc=4)
+    plt.show()
+
     accuracy = accuracy_score(Y_correct_prediction, y_predict)
 
     mean_abs_error = mean_absolute_error(Y_correct_prediction, y_predict)
@@ -122,6 +156,7 @@ def model_train(X, y):
 
     f1_sc = f1_score(Y_correct_prediction, y_predict)
 
+    print("AUC: " + str(auc))
     print("Accuracy: ", accuracy)
     print("Balanced Accuracy: ", balanced_accuracy)
     print("Recall: ", recall)
@@ -137,6 +172,7 @@ def model_train(X, y):
         f.write("Params = " + params.__str__() + "\n")
         f.write("Feature cols: " + feature_cols_.__str__() + "\n")
         f.write("Metrics: " + "\n")
+        f.write("AUC: " + str(auc) + "\n")
         f.write("Accuracy: " + accuracy.__str__() + "\n")
         f.write("Balanced Accuracy: " + balanced_accuracy.__str__() + "\n")
         f.write("Recall: " + recall.__str__() + "\n")

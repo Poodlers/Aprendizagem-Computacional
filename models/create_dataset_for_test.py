@@ -30,6 +30,8 @@ def process_dataset(database_path):
 
     # create age_at_loan - FEATURE ENGINEERING
 
+    loan_dev_df = loan_dev_df.fillna(0)
+
     age_at_loan = []
     for i in range(loan_dev_df['birth_number'].size):
         try:
