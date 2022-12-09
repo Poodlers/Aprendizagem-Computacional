@@ -74,7 +74,7 @@ def model_train(X, y):
 
     # trainX = scaler.transform(trainX)
 
-    model = RandomForestClassifier(class_weight='balanced')
+    model = get_stacking()
 
     model_type = model.__class__.__name__
     print(model_type)
