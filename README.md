@@ -1,120 +1,68 @@
-# Business Understanding
+# Data Mining Project
 
-### BU: analysis of requirements with the end user
+## Team - G38
 
-Our model should be able to guess correctly at least 90% of the outcomes of loans to be given.
+- Joana Mesquita - up201907878
+- João Costa - up2019
+- Miguel Freitas - up2019
 
-### BU: definition of business goals
+We considered that we all worked equally in the elaboration of this project and therefore all deserve 1/3 when it come to the Individual factor.
 
-The goal is to develop a model to aid the end user in deciding wether a specific client is going to pay back a loan he is applying to and, therefore, if this loan is worth lending. The model should take into account a set of characteristics of the client and use them to make a decision.
+# Files explanation
 
-### BU: translation of business goals into data mining goals
+### csvs Folder
 
-A data mining model needs to be created to process the data. This model will be trained with data given by the bank that contanis information about past lent loans, account informations, geographical statistics, among others. By training the model with this data we should be able to develop the behavior we aim to achieve. In order to ensure that our model is indeed guessing the loan results right, we need to be careful not to use the whole data for training but to save some of it for testing purposes. Since that an un
+- Folder with the csvs given to elaborate the project
 
-# Data Understanding
+### [analyser.py](/analyser.py)
 
-### DU: diversity of statistical methods
+- script that displays some relevant feature's data such as mean, standard deviation, as well as correlation between variables
 
-We analysed multiple fields of different tables, calculating their average, variance, standard deviation and looking for outliers, through analytical and graphical methods. We also made an analysis between diferent columns, caclulating their Pearson correlation.
+### [distributions_vars.py](/distributions_vars.py)
 
-Statistical methods:
+- script that displays feature's distributions
 
-- Average
-- Standard Deviation
-- Max
-- Min
-- Variance
-- Pearson Correlation
-- Graphical Methods
+### [excel_to_sql.py](/excel_to_sql.py)
 
-### DU: complexity of statistical methods
+- script that converted the initial csv sheets into a more convenient sqlite database
 
-The biggest complexity that we implemented was creating a program that allowed us to quickly analyse the data (analyser.py) and extract all its statistical information.
+### [pearson_correlation_coefficient.py](/pearson_correlation_coefficient.py)
 
-### DU: interpretation of results of statistical methods
+- script that extracts pearson_correlation between features
 
-It was very dificult to find clear evidence of strong correlation between different fields, but we were able to find, for example, that the bigger the loan is, the less it is prone to fail.
+### [data_understanding.ipynb](/data_understanding.ipynb)
 
-### DU: knowledge extraction from results of statistical methods
+- Python notebook containing various graphs made for data understanding
 
-### DU: diversity of plots
+### [models/create_dataset_for_test.py](/models/create_dataset_for_test.py)
 
-We created mostly scatter plots and bar plots.
+- script that prepares our data to be fed to our models, performing encoding and removal of useless features such as ids
 
-### DU: complexity of plots
+### [models/encoder_one_hot.py](/models/encoder_one_hot.py)
 
-The complexity of the plots is relatively low, but that didn't make us less aware of the data before us, it rather made it easier for us to understand the nature of the data
+- helper script that implemented OneHotEncoder to our specific needs, namely the creation of multiple features for each categorical feature
 
-### DU: presentation
+### [models/feature_selection.py](/models/feature_selection.py)
 
-### DU: interpretation of plots
+- script that applies both filter-based and wrapper-based feature selection methods
 
-# Data Processing
+### [models/hyperparameter_tuning.py](/models/hyperparameter_tuning.py)
 
-### DP: data integration
+- script that helped us apply grid search with cross-validation in order to get the best parameters to our algorithms
 
-### DP: assessment of dimensions of data quality
+### models/model_cross_validation.py
 
-2 dimensions (usually accuracy and completeness)
+- script for model evaluation and metrics extraction
 
-3 dimensions (... consistency or uniqueness)
+### models/model_train_test.py
 
-4 dimensions (... consistency and uniqueness)
+- script for fitting algorithms and then predicting data
 
-### DP (cleaning): redundancy
+### models/test_data
 
-removal of some redundant attributes: training the module without the following
+- Data to predict and submit to kaggle
+  - [models/test_data/pouplate_test_db.py](/models/test_data/pouplate_test_db.py) - Script to add the test data to a database ([models/test_data/test_database.db](/models/test_data/test_database.db))
 
-["date", "type", "name", "region", "birth_number", "no. of municipalities with inhabitants < 499 ",
-"no. of municipalities with inhabitants 500-1999", "no. of municipalities with inhabitants 2000-9999 ",
-"no. of municipalities with inhabitants >10000 ", "loan_id", "district_id", "account_id", "status"
-]
+### SMOTE_tests/smote.py
 
-### DP (cleaning): missing data
-
-Currently dropping the missing values (only model that exists is Logistic Regression which doesnt accept missing values anyway)
-
-`train = train.dropna() `
-
-### DP (cleaning): outliers
-
-### DP: data transformation for compatibility with algorithms
-
-discretization of gender and frequency variables to feed our LogisticRegression
-
-`age_dict = {"M": 0, "F": 1} frequency_dict = {"monthly issuance": 0, "issuance after transaction": 1, "weekly issuance": 2}`
-
-### DP: feature engineering from tabular data
-
-We are attempting to extract the average balance when making transactions and average transaction amount for each account in order to maybe find correlation between the data.
-
-### DP: sampling for domain-specific purposes
-
-### DP: sampling for development
-
-### DP: imbalanced data
-
-### DP: feature selection
-
-# Algorithms - training a model
-
-### descriptive: diversity of algorithms
-
-Tested LogisticRegression algorithm
-
-### descriptive: parameter tuning
-
-Manual tuning of the LogisticRegression has been done
-
-### descriptive: understanding algorithm behavior
-
-Dont know much about the inner workings of a Logistic Regression
-
-### descriptive: performance measure
-
-<code>print("Accuracy: ", accuracy) <br> print("Balanced Accuracy: ", balanced_accuracy) <br>print("Recall: ", recall) <br> print("F1 Score: ", f1_sc)</code>
-
-### descriptive: correct interpretation of performance measures
-
-### descriptive: comparative analysis of results
+-

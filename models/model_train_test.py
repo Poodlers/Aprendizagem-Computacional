@@ -64,9 +64,7 @@ def model_train(X, y):
     # SVC
     # SVC(kernel='linear', C=1, random_state=42, probability=True)
 
-    # HistGradientBoostingClassifier(
-    # min_samples_leaf = 1, max_depth = 3, learning_rate = 0.3,  max_iter = 100,
-    #  categorical_features = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35])
+    # get_stacking()
 
     save_results = True
 
